@@ -21,6 +21,9 @@ jobs:
           registry: ${{ secrets.ACR_NAME }}
           username: ${{ secrets.ACR_LOGIN }}
           password: ${{ secrets.ACR_PASSWORD }}
+      
+      - name: echo ref variable
+        run: echo "${GITHUB_REF#refs/tags}"
 
       - name: Build and push production images
         uses: docker/build-push-action@v2
