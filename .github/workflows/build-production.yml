@@ -23,7 +23,7 @@ jobs:
           password: ${{ secrets.ACR_PASSWORD }}
       
       - name: echo ref variable
-        run: echo "${GITHUB_REF#refs/tags}"
+        run: echo "${GITHUB_REF#refs/tags/}"
 
       - name: Build and push production images
         uses: docker/build-push-action@v2
