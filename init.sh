@@ -28,6 +28,9 @@ az aks get-credentials -n $AKS_NAME -g $RESOURCE_GROUP_NAME
 
 echo "Creating ACR..."
 az acr create -n $ACR_NAME -g $RESOURCE_GROUP_NAME --sku basic
+
+echo "Waiting for 20 seconds for ACR readiness"
+
 az acr update -n $ACR_NAME --admin-enabled true
 
 export ACR_USERNAME=$(az acr credential show -n $ACR_NAME --query "username" -o tsv)
